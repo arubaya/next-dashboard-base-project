@@ -196,7 +196,7 @@ type FormProps<TFieldValues extends FieldValues = FieldValues> = React.Component
   typeof FormProvider<TFieldValues>
 > & {
   className?: string; // Optional className for the form
-  onSubmit: SubmitHandler<TFieldValues>; // Required submit handler
+  onSubmit?: SubmitHandler<TFieldValues>; // Required submit handler
   onError?: SubmitErrorHandler<TFieldValues>; // Optional error handler
 };
 

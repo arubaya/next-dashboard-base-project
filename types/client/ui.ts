@@ -17,6 +17,7 @@ export type DefaultInputProps = {
   name?: string; // Name attribute for the input
   description?: string; // Optional description or helper text
   required?: boolean; // Whether the input is required
+  fullWidth?: boolean; // Whether the input should take the full width of the container
 };
 
 /**

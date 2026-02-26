@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import FormInputWraper from '@/components/shared/FormInputWraper';
@@ -52,7 +54,7 @@ const InputComponent = ({ className, type, ...props }: React.ComponentProps<'inp
  * @param type - input type (text, password, etc)
  * @param props - other input props
  */
-const Input = ({ label, labelDirection, name, required, type, ...props }: InputProps) => {
+const Input = ({ label, labelDirection, name, required, type, fullWidth, ...props }: InputProps) => {
   // showPassword state is used to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
 
@@ -67,26 +69,34 @@ const Input = ({ label, labelDirection, name, required, type, ...props }: InputP
     setShowPassword(!showPassword);
   };
 
-  return (
-    <FormInputWraper label={label} labelDirection={labelDirection} name={name} required={required}>
-      <Stack className="relative">
-        {/* If showPassword is true, input type is 'text', otherwise use the original type */}
-        <InputComponent name={name} type={showPassword ? 'text' : type} {...props} />
-        {/* Show eye icon button only if input type is password */}
-        {type === 'password' && (
-          <Button
-            variant="ghost"
-            size="icon"
-            type="button"
-            className="absolute right-2 top-1/2 -translate-y-1/2 dark:hover:bg-transparent hover:bg-transparent"
-            onClick={handleShowPassword}
-          >
-            {showPassword ? <EyeIcon className="text-primary" /> : <EyeOffIcon />}
-          </Button>
-        )}
-      </Stack>
-    </FormInputWraper>
+  const renderInput = () => (
+    <Stack className={cn('relative', fullWidth && 'w-full')}>
+      {/* If showPassword is true, input type is 'text', otherwise use the original type */}
+      <InputComponent name={name} type={showPassword ? 'text' : type} {...props} />
+      {/* Show eye icon button only if input type is password */}
+      {type === 'password' && (
+        <Button
+          variant="ghost"
+          size="icon"
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 dark:hover:bg-transparent hover:bg-transparent"
+          onClick={handleShowPassword}
+        >
+          {showPassword ? <EyeIcon className="text-primary" /> : <EyeOffIcon />}
+        </Button>
+      )}
+    </Stack>
   );
+
+  if (label) {
+    return (
+      <FormInputWraper label={label} labelDirection={labelDirection} name={name} required={required}>
+        {renderInput()}
+      </FormInputWraper>
+    );
+  }
+
+  return renderInput();
 };
 
 export default Input;

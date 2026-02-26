@@ -28,7 +28,7 @@ const EmailSent = ({ resendEmail, isLoading, countDownTimeData, email }: EmailSe
       </Stack>
 
       <Stack direction="row" align="center" gap={1}>
-        <Typography variant="small">{t('auth.sentEmailResetPassword.emailNotReceived')}</Typography>
+        <Typography variant="small">{t('common.emailNotReceived')}</Typography>
         <Button
           onClick={resendEmail}
           disabled={isLoading || countDownTimeData.isActive}

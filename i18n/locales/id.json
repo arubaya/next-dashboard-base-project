@@ -23,6 +23,18 @@
       "light": "Terang",
       "dark": "Gelap",
       "system": "Sistem"
+    },
+    "table": {
+      "pagination": {
+        "rowsPerPage": "Baris per halaman",
+        "pageOf": "Halaman {page} dari {totalPages}",
+        "rowsSelected": "{rowsSelected} dari {rowsTotal} baris terpilih",
+        "goToFirstPage": "Pergi ke halaman pertama",
+        "goToPreviousPage": "Pergi ke halaman sebelumnya",
+        "goToNextPage": "Pergi ke halaman selanjutnya",
+        "goToLastPage": "Pergi ke halaman terakhir"
+      },
+      "noData": "Tidak ada data"
     }
   },
   "menu": {
